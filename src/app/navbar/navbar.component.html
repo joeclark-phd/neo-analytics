@@ -1,0 +1,19 @@
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark p-0">
+
+  <a href="/" class="navbar-text pb-0">
+    <img src="assets/sink2.svg" style="height: 30px" class="mb-2 mx-2">Kitchen Sink
+  </a>
+  <span class="navbar-text pb-1 mx-2">&gt;</span>
+  <img src="assets/analytics.svg" style="height: 25px" class="mr-2 pb-0">
+  <span class="navbar-brand pb-1">Analytics 2.0</span>
+
+
+  <div ngbDropdown class="d-inline-block">
+    <button class="btn btn-primary" id="dropdownBasic1" ngbDropdownToggle>Where to?</button>
+    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+      <button class="dropdown-item" routerLink="/home">Analytics Home</button>
+      <div class="dropdown-divider"></div>
+      <button class="dropdown-item" routerLink="/backorders">Backorders</button>
+    </div>
+  </div>
+</nav>

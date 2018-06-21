@@ -1,0 +1,65 @@
+
+<nav class="navbar navbar-expand-sm p-0" style="background-color: tan">
+  <span class="navbar-brand mx-2">BackOrders</span>
+
+
+  <div class="btn-group btn-group-toggle btn-group-sm" ngbRadioGroup name="radioBasic" [(ngModel)]="data.customerType">
+    <label ngbButtonLabel class="btn-warning">
+      <input ngbButton type="radio" [value]="'retail'" [routerLink]="null" [queryParams]="{customer:'retail'}" queryParamsHandling="merge"> Retail
+    </label>
+    <label ngbButtonLabel class="btn-warning">
+      <input ngbButton type="radio" [value]="'wholesale'" [routerLink]="null" [queryParams]="{customer:'wholesale'}" queryParamsHandling="merge"> Wholesale
+    </label>
+    <label ngbButtonLabel class="btn-warning">
+      <input ngbButton type="radio" [value]="null" [routerLink]="null" [queryParams]="{customer:null}" queryParamsHandling="merge"> Both
+    </label>
+  </div>
+
+
+  <span class="navbar-text mx-2">Group by:</span>
+
+  <div class="btn-group btn-group-toggle btn-group-sm" ngbRadioGroup name="radioBasic" [(ngModel)]="groupby">
+    <label ngbButtonLabel class="btn-warning">
+      <input ngbButton type="radio" [value]="'product'" routerLink="/backorders" queryParamsHandling="preserve"> Product
+    </label>
+    <label ngbButtonLabel class="btn-warning">
+      <input ngbButton type="radio" [value]="'customer'" routerLink="/backorders/customers" queryParamsHandling="preserve"> Customer
+    </label>
+  </div>
+
+  <span class="navbar-text mx-2">Category:</span>
+
+
+  <div ngbDropdown class="d-inline-block">
+    <button class="btn btn-sm btn-warning" id="dropdownBasic1" ngbDropdownToggle>{{data.displayCategory}}</button>
+    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+      <button class="dropdown-item" [routerLink]="router.fragment" [queryParams]="{category:'all'}" queryParamsHandling="merge">All</button>
+      <div class="dropdown-divider"></div>
+      <button class="dropdown-item" [routerLink]="router.fragment" [queryParams]="{category:null}" queryParamsHandling="merge">Main</button>
+      <button class="dropdown-item" [routerLink]="router.fragment" [queryParams]="{category:'bench'}" queryParamsHandling="merge">Bench</button>
+      <button class="dropdown-item" [routerLink]="router.fragment" [queryParams]="{category:'saw-chisel-blade'}" queryParamsHandling="merge">Saw-Chisel-Blade</button>
+      <button class="dropdown-item" [routerLink]="router.fragment" [queryParams]="{category:'auriou'}" queryParamsHandling="merge">Auriou</button>
+      <button class="dropdown-item" [routerLink]="router.fragment" [queryParams]="{category:'resale'}" queryParamsHandling="merge">Other Resale</button>
+    </div>
+  </div>
+
+
+  <span class="navbar-text mx-2">From warehouse:</span>
+
+  <div class="btn-group btn-group-toggle btn-group-sm" ngbRadioGroup name="radioBasic" [(ngModel)]="data.warehouse">
+    <label ngbButtonLabel class="btn-warning">
+      <input ngbButton type="radio" [value]="'FR'" [routerLink]="router.fragment" [queryParams]="{warehouse:null}" queryParamsHandling="merge"> FR
+    </label>
+    <label ngbButtonLabel class="btn-warning">
+      <input ngbButton type="radio" [value]="'benchshop'" [routerLink]="router.fragment" [queryParams]="{warehouse:'benchshop'}" queryParamsHandling="merge"> BenchShop
+    </label>
+  </div>
+
+</nav>
+
+<h1>{{data.customerType}} Backorders grouped by {{groupby}} ({{data.displayCategory}} category) ({{data.warehouse}} warehouse)</h1>
+
+
+<router-outlet></router-outlet>
+
+

@@ -1,0 +1,13 @@
+<p>
+  customer-list works!
+</p>
+
+
+<div *ngFor="let o of data.customerGroups; let i=index">
+  {{i}}: {{o.customer}} x {{o.quantity}} ({{o.amount|currency:'USD':'symbol':'1.0-0'}}) : {{o.oldest|date:'M/d/yyyy'}}
+  <ul>
+    <li *ngFor="let r of o.orders">
+      {{r.shipment}}
+    </li>
+  </ul>
+</div>
