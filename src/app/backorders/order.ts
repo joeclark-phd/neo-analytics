@@ -1,4 +1,5 @@
 export class Order {
+  product: number;
   sku: string;
   quantity: number;
   amount: number;

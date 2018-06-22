@@ -8,9 +8,19 @@ import {BackordersDataService} from "../backorders-data.service";
 })
 export class ProductListComponent implements OnInit {
 
+  private showproduct;
+
   constructor(private data:BackordersDataService) { }
 
   ngOnInit() {
+  }
+
+  get productGroups(): any {
+    return this.data.productGroups(this.showproduct);
+  }
+
+  toggle(product: number) {
+    this.showproduct = (product==this.showproduct) ? null : product;
   }
 
 }

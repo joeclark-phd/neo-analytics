@@ -14,8 +14,6 @@ import { RouterModule, Routes } from "@angular/router";
 import { HomeComponent } from './home/home.component';
 import { ProductListComponent } from './backorders/product-list/product-list.component';
 import { CustomerListComponent } from './backorders/customer-list/customer-list.component';
-import { ProductGroupComponent } from './backorders/product-group/product-group.component';
-import { ProductRowComponent } from './backorders/product-row/product-row.component';
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'backorders', component: BackordersComponent,
@@ -37,8 +35,6 @@ const appRoutes: Routes = [
     HomeComponent,
     ProductListComponent,
     CustomerListComponent,
-    ProductGroupComponent,
-    ProductRowComponent
   ],
   imports: [
     BrowserModule,

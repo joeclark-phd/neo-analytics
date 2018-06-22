@@ -53,7 +53,7 @@ export class BackordersDataService {
     return this.orders.filter(o => this.displayCategory == 'all' || o.category == this.displayCategory).filter(o => this.customerType == null || o.wholesale && this.customerType == 'wholesale' || !o.wholesale && this.customerType == 'retail').filter(o => o.warehouse == this.warehouse);
   }
 
-  get productGroups(): any {
+  productGroups(showproduct:number): any {
 
     let ct = this.customerType;
     let gs = this.productsort;
@@ -64,13 +64,14 @@ export class BackordersDataService {
     let categories = [];
     Object.keys(rawcategorygroups).forEach((key,index)=>{
       let products = [];
-      let rawproducts = groupBy(rawcategorygroups[key],'sku');
+      let rawproducts = groupBy(rawcategorygroups[key],'product');
       Object.keys(rawproducts).forEach((k,i)=> {
-        let orders = rawproducts[k].sort(function (a, b) {
+        let orders = (showproduct!=Number(k)) ? null : rawproducts[k].sort(function (a, b) {
           return (a[os] < b[os]) ? -1 : (a[os] > b[os]) ? 1 : 0;
         });
         products.push({
-          sku: k,
+          product: k,
+          sku: rawproducts[k][0]['sku'],
           quantity: arraysum(rawproducts[k], 'quantity'),
           amount: arraysum(rawproducts[k], 'amount'),
           oldest: new Date(Math.min.apply(null, rawproducts[k].map(o => new Date(o.planned_date)))),
